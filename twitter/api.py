@@ -1754,7 +1754,8 @@ class Api(object):
         result = []
         parameters = {}
         while True:
-            sec = self.GetSleepTime('followers/list') + 10
+            sec = self.GetSleepTime('followers/list') + 1
+            print 'Will wait {0} sec to avoid rate-limit'.format(sec)
             time.sleep(sec)
             next_cursor, previous_cursor, data = self.GetFollowersPaged(user_id, screen_name, cursor, count,
                                                                         skip_status, include_user_entities)
